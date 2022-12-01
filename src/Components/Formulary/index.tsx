@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '../Button';
 import { ITask } from '../types/tarefa';
 import style from './Formulary.module.scss';
+import { v4 as uuidv4 } from 'uuid';
 
 class Formulary extends React.Component<{
     setTasks: React.Dispatch<React.SetStateAction<ITask[]>>
@@ -13,7 +14,21 @@ class Formulary extends React.Component<{
 
     addTask(evento: React.FormEvent<HTMLFormElement>) {
         evento.preventDefault();
-        this.props.setTasks(oldTasks => [...oldTasks, {...this.state}])
+        this.props.setTasks(oldTasks => 
+            [
+                ...oldTasks, 
+                {
+                    ...this.state,
+                    selected: false,
+                    completed: false,
+                    id: uuidv4()
+                }
+            ]
+        )
+        this.setState({
+            tarefa: "",
+            tempo: "00:00"
+        })
     }
     render() {
         return (
