@@ -23,9 +23,9 @@ function App() {
         tasks={ tasks }
         selectTask={selectTask}
       />
-      <Cronometer />
+      <Cronometer selected={ selected }/>
     </div>
   );
 }
-
+ 
 export default App;
