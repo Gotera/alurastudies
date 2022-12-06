@@ -16,6 +16,21 @@ function App() {
       selected: task.id === selectedTask.id ? true : false
     })));
   }
+
+  function finishedTask() {
+    if (selected) {
+      setTasks(previousTasks =>
+      previousTasks.map(tasks => {
+        if(tasks.id === selected.id) {
+          return {
+            ...tasks,
+            selected: false,
+            completed: true,
+          }
+      }
+      return tasks;
+    }))
+  }}
   return (
     <div className={ style.AppStyle }>
       <Formulary setTasks={ setTasks }/>
@@ -23,7 +38,10 @@ function App() {
         tasks={ tasks }
         selectTask={selectTask}
       />
-      <Cronometer selected={ selected }/>
+      <Cronometer 
+        selected={ selected }
+        finishedTask={ finishedTask }
+      />
     </div>
   );
 }
