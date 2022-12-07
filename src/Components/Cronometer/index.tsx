@@ -14,8 +14,8 @@ export default function Cronometer({ selected, finishedTask }: Props) {
     const [time, setTime] = useState<number>();
 
     useEffect(() => {
-        if(selected?.tempo) {
-            setTime(timeToSeconds(selected.tempo))
+        if(selected?.time) {
+            setTime(timeToSeconds(selected.time))
         }
     },[selected]);
 

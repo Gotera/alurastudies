@@ -6,7 +6,7 @@ import { ITask } from '../Components/types/tarefa';
 import style from'./App.module.scss'
 
 function App() {
-  const [tasks, setTasks] = useState<ITask[] | []>([])
+  const [tasks, setTasks] = useState<ITask[]>([]);
   const [selected, setSelected] = useState<ITask>();
 
   function selectTask(selectedTask: ITask) {
@@ -19,16 +19,17 @@ function App() {
 
   function finishedTask() {
     if (selected) {
+      setSelected(undefined);
       setTasks(previousTasks =>
-      previousTasks.map(tasks => {
-        if(tasks.id === selected.id) {
+      previousTasks.map(task => {
+        if(task.id === selected.id) {
           return {
-            ...tasks,
+            ...task,
             selected: false,
             completed: true,
           }
       }
-      return tasks;
+      return task;
     }))
   }}
   return (

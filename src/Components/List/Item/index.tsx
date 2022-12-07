@@ -7,8 +7,8 @@ interface Props extends ITask{
 
 export default function Item(
     { 
-        tarefa, 
-        tempo, 
+        task, 
+        time, 
         selected, 
         completed, 
         id, 
@@ -26,16 +26,16 @@ export default function Item(
             }
             onClick={() => !completed && selectTask(
                 {
-                tarefa, 
-                tempo, 
+                task, 
+                time, 
                 selected, 
                 completed, 
                 id, 
                 })
             }
         >
-        <h3> { tarefa } </h3>
-        <span> { tempo } </span>
+        <h3> { task } </h3>
+        <span> { time } </span>
         { completed && <span className={ style.concluido } aria-label='task completed'></span> }
     </li>
     )

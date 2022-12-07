@@ -1,6 +1,6 @@
 export interface ITask {
-    tarefa: string,
-    tempo: string,
+    task: string,
+    time: string,
     selected: boolean,
     completed: boolean,
     id: string
